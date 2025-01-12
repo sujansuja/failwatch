@@ -36,5 +36,4 @@ const addRouter = require('./src/routes/Add')
 app.use('/api/add', addRouter)
 
 const tokenRouter = require('./src/routes/Token');
-const handleFailedAttempt = require('./src/utils/HandleFailedAttempts');
 app.use('/api/token', tokenRouter)

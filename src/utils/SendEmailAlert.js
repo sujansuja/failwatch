@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 // Function to send alert email
-async function sendAlertEmail(ip) {
+async function sendAlertEmail(ip, FAILED_ATTEMPTS_THRESHOLD, TIME_WINDOW_MINUTES) {
 
     // email transporter using nodemailer npm package
     const transporter = nodemailer.createTransport({

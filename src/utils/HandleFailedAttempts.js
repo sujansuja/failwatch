@@ -1,7 +1,7 @@
 const FailedRequest = require('../models/FailedRequest')
 const sendAlertEmail = require('../utils/SendEmailAlert')
 
-const FAILED_ATTEMPTS_THRESHOLD = 5;
+const FAILED_ATTEMPTS_THRESHOLD = 6;
 const TIME_WINDOW_MINUTES = 10;
 
 // In-Memory cache to store failed attempts
@@ -34,7 +34,7 @@ async function handleFailedAttempt(req, reason) {
     // Trigger alert if threshold is exceeded
     if (failedAttemptsCache[clientIP].length >= FAILED_ATTEMPTS_THRESHOLD) {
         console.log("Threshold exceeded. Sending alert email...");
-        await sendAlertEmail(clientIP);
+        await sendAlertEmail(clientIP, FAILED_ATTEMPTS_THRESHOLD, TIME_WINDOW_MINUTES);
     }
 }
 
